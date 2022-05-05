@@ -365,6 +365,23 @@ func (db *DB) getInstance() *DB {
 
 		if db.clone == 1 {
 			// clone with new statement
+			
+			setings := sync.Map{}
+			d,e := db.Get("xs-uuid")
+			if e{
+				setings.Store("xs-uuid",d)
+			}
+
+			d,e = db.Get("xs-uuid-internal")
+			if e{
+				setings.Store("xs-uuid-internal",d)
+			}
+			d,e = db.Get("signed-user")
+			if e{
+				setings.Store("signed-user",d)
+			
+			}
+			
 			tx.Statement = &Statement{
 				DB:       tx,
 				ConnPool: db.Statement.ConnPool,
