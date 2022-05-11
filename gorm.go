@@ -387,6 +387,7 @@ func (db *DB) getInstance() *DB {
 				ConnPool: db.Statement.ConnPool,
 				Context:  db.Statement.Context,
 				Clauses:  map[string]clause.Clause{},
+				Settings: setings,
 				Vars:     make([]interface{}, 0, 8),
 			}
 		} else {
